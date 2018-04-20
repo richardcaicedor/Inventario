@@ -84,9 +84,9 @@
             </tfoot>
         </table>
     </div>
-    <!-- /.box-body -->
 </div>
 </section> 
+<!-- Formulario de Modificacion de los tipos de insumos -->
 @include('catalogos.tipoInsumo.editar')
 <br><br>
 @endsection
