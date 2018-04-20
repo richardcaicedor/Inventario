@@ -19,7 +19,7 @@ class TipoInsumoController extends Controller
      */
     public function index()
     {
-        /* Se realiza la consulta de todos los tipos de insumos */
+        /* Se realiza la consulta de todos los tipos de insumos Richard Alejandro */
         $tipoInsumos = TipoInsumo::all();
         return view('catalogos.tipoinsumo.index')->with('tipoInsumos',$tipoInsumos);
     }
