@@ -21,7 +21,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">Formulario de Creación </h3><br>
         </div>
-        <!-- /.box-header -->
+        <!-- Formulario de Creacion del tipo de Insumos -->
         {!! Form::open(['route'=>'app.tipoInsumo.store', 'method'=>'POST']) !!}
             <div class="box-body">
                 <div class="form-group">
