@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\TipoInsumo;
 use Laracasts\Flash\Flash;
-use App\Http\Requests\TipoInsumoRequest; 
+use App\Http\Requests\TipoInsumoRequest;    
 
 class TipoInsumoController extends Controller
 {
