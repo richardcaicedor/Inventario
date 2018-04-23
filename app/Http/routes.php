@@ -68,7 +68,17 @@ Route::group(['prefix'=>'app','middleware'=>'auth'],function(){
 	Route::get('equipos/{id}/destroy',[
 		'uses' => 'ActivoFijoController@destroy',
 		'as' =>'app.equipos.destroy',
+	]); 
+ 
+	/* RUTA de administracion del inventario de Insumos */
+	Route::resource('insumos','InsumoController');
+	/* RUTA para la eliminacion de los Insumos */ 
+	Route::get('insumos/{id}/destroy',[
+		'uses' => 'InsumoController@destroy',
+		'as' =>'app.insumos.destroy',
 	]);
 
- 
+	/* RUTA de solicitudes  */
+	Route::resource('solicitud','SolicitudController');
+  
 });

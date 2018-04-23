@@ -14,4 +14,8 @@ class TipoInsumo extends Model
     protected $fillable = ['descripcion','observacion'];  
 
     protected $dates = ['deleted_at'];
+
+    public function insumo(){
+    	return $this->hasMany('App\Insumo');
+    }
 }

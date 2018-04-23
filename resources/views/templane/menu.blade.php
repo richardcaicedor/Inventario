@@ -38,6 +38,16 @@
                 <i class="fa fa-desktop"></i> <span>Administración Equipos</span>
               </a>
             </li>
+            <li>
+              <a href="{{ route('app.insumos.index') }}"> 
+                <i class="fa fa-medkit"></i> <span>Administración Insumos</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ route('app.solicitud.index') }}"> 
+                <i class="fa fa-shopping-cart"></i> <span>Solicitudes</span>
+              </a>
+            </li>
             <li class="header">INFORMACIÓN</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Manual de Uso</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Objetivo</span></a></li>
