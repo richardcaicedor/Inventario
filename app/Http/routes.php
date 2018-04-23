@@ -62,5 +62,13 @@ Route::group(['prefix'=>'app','middleware'=>'auth'],function(){
 		'as' =>'app.tipoInsumo.destroy',
 	]);
 
+	/* RUTA de administracion del inventario de activos fijos */
+	Route::resource('equipos','ActivoFijoController');
+	/* RUTA para la eliminacion de los activos Fijos */ 
+	Route::get('equipos/{id}/destroy',[
+		'uses' => 'ActivoFijoController@destroy',
+		'as' =>'app.equipos.destroy',
+	]);
+
  
 });
