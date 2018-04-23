@@ -11,12 +11,12 @@ class ActivoFijo extends Model
 
     protected $table ='activos_fijos';
 
-    protected $fillable = ['idtipoequipo','observacion','arearesponsable','codigobarra','marca','modelo','ordencompra','fechaingreso','fechacompra','estado','costo'];  
-
+    protected $fillable = ['tipoequipo_id','observacion','arearesponsable','codigobarra','marca','modelo','ordencompra','fechacompra','estado','costo'];  
+ 
     protected $dates = ['deleted_at'];
 
     public function tipoEquipo(){
-    	return $this->belongsTo('App\TipoEquipo');
+    	return $this->belongsTo('App\TipoEquipo','tipoequipo_id'); 
     }
 
 }
