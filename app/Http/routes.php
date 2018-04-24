@@ -80,5 +80,8 @@ Route::group(['prefix'=>'app','middleware'=>'auth'],function(){
 
 	/* RUTA de solicitudes  */
 	Route::resource('solicitud','SolicitudController');
+
+	/* RUTA de solicitudes  */
+	Route::get('solicitud/{id}/validarCantidad',['uses' =>'SolicitudController@validarCantidad','as'=>'app.solicitud.validarCantidad']);
   
 });

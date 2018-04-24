@@ -19,45 +19,39 @@
         <div class="box-header with-border">
             <h3 class="box-title">Formulario de Creación </h3><br> 
         </div>
-        {!! Form::open(['route'=>'app.insumos.store', 'method'=>'POST']) !!}
+        {!! Form::open(['route'=>'app.solicitud.store', 'method'=>'POST']) !!}
+            <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
             <div class="box-body">
             	<div class="row">
             		<div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('descripcion','Descripción') !!} <b style="color: #EC7063;">*</b>
-                            {!! Form::text('descripcion',null,['class'=>'form-control', 'placeholder'=>'Descripción del Insumo','required']) !!}
+                            {!! Form::label('insumo_id','Insumo') !!} <b style="color: #EC7063;">*</b>
+                            {!! Form::select('insumo_id',$insumos,null,['class'=>'form-control','required', 'placeholder'=>'Seleccionar','id'=>'insumo_id']) !!}
                         </div>
                     </div>
             		<div class="col-md-6">
             			<div class="form-group">
-                            {!! Form::label('tipoinsumo_id','Tipo Insumo') !!} <b style="color: #EC7063;">*</b>
+                            {!! Form::label('solicitante','Nombre del Solicitante') !!} <b style="color: #EC7063;">*</b>
+                            {!! Form::text('solicitante',null,['class'=>'form-control', 'placeholder'=>'Nombre del Solicitante','required']) !!}
                         </div>
             		</div>
             	</div>
             	<div class="row">
             		<div class="col-md-6"> 
-                        <div class="form-group">
+                        <div class="form-group" id="{{ route('app.solicitud.validarCantidad',4) }}">
                             {!! Form::label('cantidad','Cantidad') !!} <b style="color: #EC7063;">*</b>
-                            {!! Form::number('cantidad',null,['class'=>'form-control','required']) !!}
+                            {!! Form::number('cantidad',null,['class'=>'form-control validarCantidad','required']) !!}
                         </div>
                     </div>
-            		<div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('estado','Estado del Insumo') !!} <b style="color: #EC7063;">*</b>
-                            {!! Form::select('estado',[''=>'Seleccionar Estado','Activo'=>'Activo','Bloqueado'=>'Bloqueado'],null,['class'=>'form-control','required']) !!}
-                        </div>
-                    </div>
-            	</div>
-            	<div class="row">
             		<div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('observacion','Observación') !!}
                             {!! Form::textarea('observacion',null,['class'=>'form-control textarea-content', 'style'=>' height:70px; ']) !!}
-                        </div>
+                        </div> 
                     </div>
             	</div>
 	            <div>
-	            	{!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
+	            	{!! Form::submit('Guardar',['class'=>'btn btn-primary','id'=>'guardarInfo']) !!}
 	            	<a class="btn btn-default" onclick="$('#divForm').toggle('500')" >Cancelar</a>
 	            </div>
             </div>
@@ -88,12 +82,12 @@
             	@foreach($solicitudes as $solicitud)
             	<tr>
             		<td >{{ $solicitud->id }}</td>
-            		<td>{{ $solicitud->insumo_id }}</td>
+            		<td>{{ $solicitud->insumo->descripcion }}</td>
                     <td >{{ $solicitud->observacion }}</td>
-                    <td >{{ $solicitud->user_id }}</td>
+                    <td >{{ $solicitud->usuario->nombre }}</td>
                     <td >{{ $solicitud->solicitante }}</td>
-                    <td >{{ $insumo->cantidad }}</td> 
-                    <td >{{ $insumo->created_at }}</td> 
+                    <td >{{ $solicitud->cantidad }}</td> 
+                    <td >{{ $solicitud->created_at }}</td> 
             	</tr>
             	@endforeach
             </tbody>

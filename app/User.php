@@ -41,4 +41,8 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsTo('App\Documentos','tipo_docto');
     }
 
+    public function solicitud(){
+        return $this->hasMany('App\Solicitud');
+    }
+
 }

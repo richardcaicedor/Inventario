@@ -18,4 +18,8 @@ class Insumo extends Model
     public function tipoInsumo(){
     	return $this->belongsTo('App\TipoInsumo','tipoinsumo_id'); 
     }
+
+    public function solicitud(){
+    	return $this->hasMany('App\Solicitud');
+    }
 }

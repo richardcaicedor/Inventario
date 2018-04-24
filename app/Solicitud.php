@@ -12,4 +12,11 @@ class Solicitud extends Model
 
     protected $dates = ['created_at','updated_at'];
 
+    public function insumo(){
+    	return $this->belongsTo('App\Insumo','insumo_id'); 
+    }
+
+    public function usuario(){
+    	return $this->belongsTo('App\User','user_id'); 
+    }
 }

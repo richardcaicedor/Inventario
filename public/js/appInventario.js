@@ -27,4 +27,21 @@ $(document).ready(function(){
 	    })
 
 	});
+
+	$('.validarCantidad').blur(function(){
+		var cantidad = $(this).val();
+		var idInsumo = $('#insumo_id').val();
+		/* Se toma la ruta desde el id del TD donde esta la opcion Editar */
+		var ruta = $(this).parent().attr('id').replace('4',idInsumo)
+		$.get(ruta, function (data) {
+			var total = data.cantidad -cantidad;
+			if(total<0){
+				$("#guardarInfo").attr('disabled',true);
+				alert('La cantidad solicitada supera el stock en bodega. (Cant Actual '+data.cantidad+')')
+			}else{
+				$("#guardarInfo").attr('disabled',false);
+			}
+	    })
+	});
+
 })

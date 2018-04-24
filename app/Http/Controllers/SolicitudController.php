@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Solicitud;
+use App\Insumo;   
+use Laracasts\Flash\Flash;
 
 class SolicitudController extends Controller
 {
@@ -19,7 +21,17 @@ class SolicitudController extends Controller
     {
         /* Se obtienen todas las solicitudes de la base de datos */
         $solicitudes = Solicitud::all();
-        return view('solicitudes.index')->with('solicitudes',$solicitudes);
+        /* Se consulta todos los insumos  */
+        $insumos = Insumo::orderBy('descripcion','ASC')->lists('descripcion','id');
+
+        /* Se recorre la informacion para obtener la descripcion del tipo de Insumo */
+        $solicitudes->each(function($solicitudes){
+            $solicitudes->insumo;
+            $solicitudes->usuario;
+        });
+
+        /* Se envia la informacion a la interfaz del usuario */
+        return view('solicitudes.index')->with('solicitudes',$solicitudes)->with('insumos',$insumos);
     }
 
     /**
@@ -40,7 +52,13 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* Se crea objeto con la informacion de formulario de creacion */
+        $solicitud = new Solicitud($request->all());
+        /* Se almacena la informacion */
+        $solicitud->save();
+        /* Se envia mensaje de confirmacion a la pantalla de administracion */
+        Flash::success('La Solicitud fue creada Exitosamente! ');
+        return redirect()->route('app.solicitud.index');
     }
 
     /**
@@ -49,9 +67,10 @@ class SolicitudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function validarCantidad($id)
     {
-        //
+        $insumo = Insumo::find($id); 
+        return response()->json($insumo);
     }
 
     /**
