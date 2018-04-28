@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Solicitud;
 use App\Insumo;   
 use Laracasts\Flash\Flash;
-
+    
 class SolicitudController extends Controller
 {
     /**
@@ -18,7 +18,7 @@ class SolicitudController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         /* Se obtienen todas las solicitudes de la base de datos */
         $solicitudes = Solicitud::all();
         /* Se consulta todos los insumos  */
