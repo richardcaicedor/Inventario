@@ -45,6 +45,11 @@
               </a>
             </li>
             <li>
+              <a href="{{ route('app.insumos.index') }}"> 
+                <i class="fa fa-medkit"></i> <span>Administración Insumos</span>
+              </a>
+            </li>
+            <li>
               <a href="{{ route('app.solicitud.index') }}"> 
                 <i class="fa fa-shopping-cart"></i> <span>Solicitudes</span>
               </a>
